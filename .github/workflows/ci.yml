@@ -1,39 +1,28 @@
 name: CI Test Pipeline 
 
- 
-
 on: 
-
   push: 
-
     branches: 
-
       - main 
-
   pull_request: 
 
- 
-
 jobs: 
-
   build-and-test: 
-
     runs-on: ubuntu-latest 
-
     steps: 
-
       - name: Checkout source code 
-
         uses: actions/checkout@v3 
 
- 
-
       - name: Simulate Build 
-
-        run: docker compoes up -d
-
+        run: 
+          docker compose up -d
+          echo "waiting..."
+          sleep 20
  
-
       - name: Simulate Test 
+        run: docker compose exec -it web curl http://localhost:5000/api/users
 
-        run: curl localhost:5000/api/users 
+
+      - name: Shutdown
+        if: always()
+        run: docker compose down -v
