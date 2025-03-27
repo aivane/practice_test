@@ -14,8 +14,9 @@ jobs:
         uses: actions/checkout@v3 
 
       - name: Simulate Build 
-        run: 
+        run: |
           docker compose up -d
+          echo "waiting..."
           sleep 20
  
       - name: Simulate Test 
