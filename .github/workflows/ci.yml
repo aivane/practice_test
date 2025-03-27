@@ -30,10 +30,10 @@ jobs:
 
       - name: Simulate Build 
 
-        run: echo "Building project..." 
+        run: docker compoes up -d
 
  
 
       - name: Simulate Test 
 
-        run: echo "Running tests... ✅" 
+        run: curl localhost:5000/api/users 
