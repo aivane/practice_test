@@ -16,7 +16,6 @@ jobs:
       - name: Simulate Build 
         run: 
           docker compose up -d
-          echo "waiting..."
           sleep 20
  
       - name: Simulate Test 
